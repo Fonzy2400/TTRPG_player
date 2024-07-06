@@ -1,4 +1,6 @@
 extends Node2D
+#main handler for the actual game setup
+#TODO: Make it so that the object displayed at the top is the one that gets picked up when creatures overlap
 
 
 # Called when the node enters the scene tree for the first time.
@@ -21,6 +23,15 @@ func _on_put_down():
 	var objects = get_tree().get_nodes_in_group("Movables")
 	for object in objects:
 		if(!object.held):
+			object.set_process(true)
+func _on_start_rotate():
+	var objects = get_tree().get_nodes_in_group("Movables")
+	for object in objects:
+		if(!object.rotating):
+			object.set_process(false)
+func _on_end_rotate():
+	var objects = get_tree().get_nodes_in_group("Movables")
+	for object in objects:
 			object.set_process(true)
 #detects the first creature held and "sets down" all of the rest.
 func multiple_grabs_handler():

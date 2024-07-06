@@ -1,12 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://b6uikah0dyihj"]
+[gd_scene load_steps=10 format=3 uid="uid://brv8r1qq00oo6"]
 
-[ext_resource type="Texture2D" uid="uid://bq3kaalfvjxx6" path="res://Pixel art/D&D assets.png" id="1_nafw1"]
-[ext_resource type="Script" path="res://Kobold_Mine.gd" id="1_sm6vd"]
-[ext_resource type="Script" path="res://Camera2D.gd" id="2_bopu8"]
-[ext_resource type="PackedScene" uid="uid://bc6ynutmbq71w" path="res://movable_object.tscn" id="3_qp3gt"]
+[ext_resource type="Script" path="res://World.gd" id="1_6mxbr"]
+[ext_resource type="Texture2D" uid="uid://bq3kaalfvjxx6" path="res://Pixel art/D&D assets.png" id="2_w0fkh"]
+[ext_resource type="Script" path="res://Camera2D.gd" id="3_ou46f"]
+[ext_resource type="PackedScene" uid="uid://bc6ynutmbq71w" path="res://movable_object.tscn" id="4_iwre2"]
+[ext_resource type="PackedScene" uid="uid://xmj6i2pxkpuk" path="res://shape.tscn" id="5_1qfgy"]
+[ext_resource type="Texture2D" uid="uid://c16x0pwb73gh6" path="res://D&D assets.png" id="6_an3ow"]
+[ext_resource type="Script" path="res://cursor.gd" id="6_ypqia"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7w5nx"]
-texture = ExtResource("1_nafw1")
+texture = ExtResource("2_w0fkh")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -69,8 +72,8 @@ texture = ExtResource("1_nafw1")
 [sub_resource type="TileSet" id="TileSet_p6p6w"]
 sources/0 = SubResource("TileSetAtlasSource_7w5nx")
 
-[node name="Node2D" type="Node2D"]
-script = ExtResource("1_sm6vd")
+[node name="World" type="Node2D"]
+script = ExtResource("1_6mxbr")
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
@@ -89,37 +92,48 @@ layer_1/tile_data = PackedInt32Array(851991, 131072, 0, 851992, 131072, 0, 91752
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(491, 266)
 zoom = Vector2(4, 4)
-script = ExtResource("2_bopu8")
+script = ExtResource("3_ou46f")
 
 [node name="Timer" type="Timer" parent="Camera2D"]
 wait_time = 0.1
 
-[node name="red wyrmling" parent="." instance=ExtResource("3_qp3gt")]
+[node name="red wyrmling" parent="." instance=ExtResource("4_iwre2")]
 position = Vector2(553, 233)
 scale = Vector2(0.75, 0.75)
 nameString = "red wyrmling"
 
-[node name="blue wyrmling" parent="." instance=ExtResource("3_qp3gt")]
+[node name="blue wyrmling" parent="." instance=ExtResource("4_iwre2")]
 position = Vector2(502, 261)
 scale = Vector2(0.75, 0.75)
 nameString = "blue wyrmling"
 
-[node name="sword kobold" parent="." instance=ExtResource("3_qp3gt")]
+[node name="sword kobold" parent="." instance=ExtResource("4_iwre2")]
 position = Vector2(455, 233)
 scale = Vector2(0.75, 0.75)
 nameString = "sword kobold"
 
-[node name="bow kobold" parent="." instance=ExtResource("3_qp3gt")]
+[node name="bow kobold" parent="." instance=ExtResource("4_iwre2")]
 position = Vector2(568, 258)
 scale = Vector2(0.75, 0.75)
 nameString = "bow kobold"
 
-[node name="mage kobold" parent="." instance=ExtResource("3_qp3gt")]
+[node name="mage kobold" parent="." instance=ExtResource("4_iwre2")]
 position = Vector2(523, 302)
 scale = Vector2(0.75, 0.75)
 nameString = "mage kobold"
 
-[node name="giant spider" parent="." instance=ExtResource("3_qp3gt")]
+[node name="giant spider" parent="." instance=ExtResource("4_iwre2")]
 position = Vector2(478, 292)
 scale = Vector2(0.75, 0.75)
 nameString = "giant spider"
+
+[node name="shape" parent="." instance=ExtResource("5_1qfgy")]
+visible = false
+
+[node name="cursor" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(10, 0)
+texture = ExtResource("6_an3ow")
+region_enabled = true
+region_rect = Rect2(224, 0, 32, 32)
+script = ExtResource("6_ypqia")
