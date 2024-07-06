@@ -1,6 +1,5 @@
 extends Node2D
 @export var nameString: String
-
 var clickable = false
 var held = false
 var rect 
@@ -18,6 +17,7 @@ func _ready():
 		connect("pickedUp",get_parent()._on_picked_up)
 	if get_parent()!=null:
 		connect("putDown",get_parent()._on_put_down)
+	add_to_group("Movables")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -30,6 +30,7 @@ func _process(delta):
 		
 	if(Input.is_action_just_released("leftClick") and held):
 		held = false
+		print("I was put down!")
 		putDown.emit()
 
 func _on_area_2d_mouse_entered():
