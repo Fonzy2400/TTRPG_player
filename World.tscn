@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://brv8r1qq00oo6"]
+[gd_scene load_steps=10 format=3 uid="uid://brv8r1qq00oo6"]
 
 [ext_resource type="Script" path="res://World.gd" id="1_6mxbr"]
 [ext_resource type="Texture2D" uid="uid://bq3kaalfvjxx6" path="res://Pixel art/D&D assets.png" id="2_w0fkh"]
 [ext_resource type="Script" path="res://Camera2D.gd" id="3_ou46f"]
 [ext_resource type="PackedScene" uid="uid://bc6ynutmbq71w" path="res://movable_object.tscn" id="4_iwre2"]
-[ext_resource type="PackedScene" uid="uid://xmj6i2pxkpuk" path="res://shape.tscn" id="5_1qfgy"]
+[ext_resource type="PackedScene" uid="uid://7luewc8w5ks6" path="res://shape2.tscn" id="6_e3b76"]
 [ext_resource type="Script" path="res://cursor.gd" id="6_ypqia"]
+[ext_resource type="PackedScene" uid="uid://bc6jhkmayfmpg" path="res://shape_handler.tscn" id="7_ycuix"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7w5nx"]
 texture = ExtResource("2_w0fkh")
@@ -126,12 +127,15 @@ position = Vector2(472, 296)
 scale = Vector2(0.75, 0.75)
 nameString = "giant spider"
 
-[node name="shape" parent="." instance=ExtResource("5_1qfgy")]
+[node name="Movable Object" parent="." instance=ExtResource("6_e3b76")]
 
 [node name="cursor" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(10, 0)
 texture = ExtResource("2_w0fkh")
 region_enabled = true
-region_rect = Rect2(0, 0, 32, 32)
+region_rect = Rect2(224, 0, 32, 32)
 script = ExtResource("6_ypqia")
+
+[node name="shape_handler" parent="." instance=ExtResource("7_ycuix")]
+position = Vector2(301, 123)

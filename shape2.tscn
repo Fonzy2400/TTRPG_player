@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://7luewc8w5ks6"]
+
+[ext_resource type="PackedScene" uid="uid://bc6ynutmbq71w" path="res://movable_object.tscn" id="1_bo8ch"]
+[ext_resource type="Script" path="res://shape.gd" id="2_0dtxe"]
+
+[node name="Movable Object" instance=ExtResource("1_bo8ch")]
+
+[node name="shape" type="Polygon2D" parent="." index="3"]
+script = ExtResource("2_0dtxe")

@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://bc6jhkmayfmpg"]
+
+[ext_resource type="Script" path="res://shape_handler.gd" id="1_0pqql"]
+
+[node name="shape_handler" type="Node2D"]
+position = Vector2(291, 123)
+script = ExtResource("1_0pqql")
+
+[node name="Square Button" type="Button" parent="."]
+offset_left = -134.0
+offset_top = -15.0
+offset_right = -71.0
+offset_bottom = 16.0
+text = "Square"
+metadata/_edit_use_anchors_ = true
+
+[node name="Cone Button" type="Button" parent="."]
+offset_left = -36.0
+offset_top = -15.0
+offset_right = 32.0
+offset_bottom = 16.0
+text = "Cone"
+metadata/_edit_use_anchors_ = true
+
+[node name="Circle Button" type="Button" parent="."]
+offset_left = 61.0
+offset_top = -14.0
+offset_right = 126.0
+offset_bottom = 15.0
+text = "Circle"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Square Button" to="." method="_on_square_button_pressed"]
+[connection signal="pressed" from="Cone Button" to="." method="_on_cone_button_pressed"]
+[connection signal="pressed" from="Circle Button" to="." method="_on_circle_button_pressed"]

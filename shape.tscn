@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://shape.gd" id="1_x6cav"]
 [ext_resource type="PackedScene" uid="uid://bc6ynutmbq71w" path="res://movable_object.tscn" id="2_77fuq"]
 
-[node name="shape" type="Node2D"]
-script = ExtResource("1_x6cav")
+[node name="Movable Object" instance=ExtResource("2_77fuq")]
 
-[node name="Movable Object" parent="." instance=ExtResource("2_77fuq")]
+[node name="shape" type="Polygon2D" parent="." index="3"]
+script = ExtResource("1_x6cav")

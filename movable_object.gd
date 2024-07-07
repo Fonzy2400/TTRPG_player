@@ -1,4 +1,6 @@
-#TODO: Occassionally multiple nontouching assets rotate for no reason??? fix that.
+#TODO: 
+#Occassionally multiple nontouching assets rotate for no reason??? fix that.
+#Need ability to delete any movable object (probably pretty easy?)
 
 extends Node2D
 @export var nameString: String
@@ -6,6 +8,7 @@ var clickable = false #boolean for whether or not an object can be picked up. Is
 var rotatable = false #tracks whether object can be rotated
 var rotating = false #tracks whether an object is rotating or not
 var held = false #boolean for while an object is held
+var selected = false #tracks if this is the last object selected
 var rect #defines region for visual asset
 signal pickedUp #signal emitted to main handler to turn off other objects while object is held
 signal putDown #signal emiited to main handler to resume other objects after object is set down
@@ -46,6 +49,7 @@ func _process(delta):
 	#When the mouse is inside of an object's collision it can be clicked
 	if(Input.is_action_just_pressed("leftClick") and clickable):
 		held = true
+		selected = true
 		pickedUp.emit() #handler turns off all other objects
 	#until mouse button is let go, object is attached to mouse
 	if (held):
@@ -65,12 +69,12 @@ func _process(delta):
 		previousMousePosition = get_local_mouse_position() 
 		rotating = true
 		startRotate.emit()
-
-
 	if(Input.is_action_just_released("leftClick")):
 		rotatable = false
 		rotating = false
 		endRotate.emit()
+	if(Input.is_action_just_pressed("delete") and selected):
+		get_parent().remove_child(self)
 
 		
 		
