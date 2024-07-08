@@ -11,6 +11,7 @@ func _process(delta):
 	if(Input.is_action_just_released("leftClick") and rotating):
 		rotating = false
 		reset_mouse()
+	get_parent().move_child(self,-1)
 
 
 func _on_can_rotate():

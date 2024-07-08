@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxtx58jyw8eor"]
+
+[ext_resource type="Script" path="res://obstacle_handler.gd" id="1_ubq2k"]
+
+[node name="obstacle_handler" type="MenuButton"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "obstacles"
+item_count = 6
+popup/item_0/text = "Crate"
+popup/item_0/id = 0
+popup/item_1/text = "Barrel"
+popup/item_1/id = 1
+popup/item_2/text = "Rock"
+popup/item_2/id = 2
+popup/item_3/text = "Big Rock"
+popup/item_3/id = 3
+popup/item_4/text = "Big Crate"
+popup/item_4/id = 4
+popup/item_5/text = "Hole"
+popup/item_5/id = 5
+script = ExtResource("1_ubq2k")

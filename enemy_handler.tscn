@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://dq5v1it86kno5"]
+
+[ext_resource type="Script" path="res://enemy_handler.gd" id="1_ygl2c"]
+
+[node name="enemy_handler" type="MenuButton"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1078.0
+offset_bottom = -599.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Enemies"
+item_count = 6
+popup/item_0/text = "Melee Kobold"
+popup/item_0/id = 0
+popup/item_1/text = "Ranged Kobold"
+popup/item_1/id = 1
+popup/item_2/text = "Magic Kobold"
+popup/item_2/id = 2
+popup/item_3/text = "Giant Spider"
+popup/item_3/id = 3
+popup/item_4/text = "Blue Wyrmling"
+popup/item_4/id = 4
+popup/item_5/text = "Red Wyrmling"
+popup/item_5/id = 5
+script = ExtResource("1_ygl2c")

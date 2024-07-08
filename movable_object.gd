@@ -3,7 +3,8 @@
 #Need ability to delete any movable object (probably pretty easy?)
 
 extends Node2D
-@export var nameString: String
+@export var nameObject: String
+var nameString
 var clickable = false #boolean for whether or not an object can be picked up. Is triggered by mouse entering collision
 var rotatable = false #tracks whether object can be rotated
 var rotating = false #tracks whether an object is rotating or not
@@ -20,6 +21,11 @@ var previousMousePosition #needed for calculationg mouse angular velocity
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#this if else statement allows for me to set the name with a spawner or in editor without anything crashing
+	if nameObject!="":
+		nameString = nameObject
+	else:
+		rect = Rect2(0,0,0,0)
 	$Sprite2D.texture = load("res://Pixel art/D&D assets.png") #sprites generated as atlas map
 	$Sprite2D.region_enabled = true #allows a selection of a part of image
 	$Sprite2D.texture_filter = TEXTURE_FILTER_NEAREST # fixes blur on pixel art (why is this not the default?!)
@@ -111,13 +117,13 @@ func _on_rotate_circle_mouse_exited():
 func name_handler():
 	if nameString == "":
 		rect = Rect2(0,0,0,0)
-	if nameString == "bow kobold":
+	if nameString == "ranged kobold":
 		rect = Rect2(160,0,16,16)
 		scale = Vector2(1,1)
-	if nameString == "sword kobold":
+	if nameString == "melee kobold":
 		rect = Rect2(144,0,16,16)
 		scale = Vector2(1,1)
-	if nameString == "mage kobold":
+	if nameString == "magic kobold":
 		rect = Rect2(176,0,16,16)
 		scale = Vector2(1,1)
 	if nameString == "giant spider":

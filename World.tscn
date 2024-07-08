@@ -1,12 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://brv8r1qq00oo6"]
+[gd_scene load_steps=9 format=3 uid="uid://brv8r1qq00oo6"]
 
 [ext_resource type="Script" path="res://World.gd" id="1_6mxbr"]
 [ext_resource type="Texture2D" uid="uid://bq3kaalfvjxx6" path="res://Pixel art/D&D assets.png" id="2_w0fkh"]
 [ext_resource type="Script" path="res://Camera2D.gd" id="3_ou46f"]
-[ext_resource type="PackedScene" uid="uid://bc6ynutmbq71w" path="res://movable_object.tscn" id="4_iwre2"]
-[ext_resource type="PackedScene" uid="uid://7luewc8w5ks6" path="res://shape2.tscn" id="6_e3b76"]
 [ext_resource type="Script" path="res://cursor.gd" id="6_ypqia"]
-[ext_resource type="PackedScene" uid="uid://bc6jhkmayfmpg" path="res://shape_handler.tscn" id="7_ycuix"]
+[ext_resource type="PackedScene" uid="uid://dq5v1it86kno5" path="res://enemy_handler.tscn" id="7_il3h0"]
+[ext_resource type="PackedScene" uid="uid://w08r33mh2o8i" path="res://shape_handler.tscn" id="7_ycuix"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7w5nx"]
 texture = ExtResource("2_w0fkh")
@@ -75,9 +74,6 @@ sources/0 = SubResource("TileSetAtlasSource_7w5nx")
 [node name="World" type="Node2D"]
 script = ExtResource("1_6mxbr")
 
-[node name="shape_handler" parent="." instance=ExtResource("7_ycuix")]
-position = Vector2(301, 123)
-
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
 tile_set = SubResource("TileSet_p6p6w")
@@ -100,40 +96,23 @@ script = ExtResource("3_ou46f")
 [node name="Timer" type="Timer" parent="Camera2D"]
 wait_time = 0.1
 
-[node name="red wyrmling" parent="." instance=ExtResource("4_iwre2")]
-position = Vector2(552, 233)
-scale = Vector2(0.75, 0.75)
-nameString = "red wyrmling"
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="blue wyrmling" parent="." instance=ExtResource("4_iwre2")]
-position = Vector2(503, 264)
-scale = Vector2(0.75, 0.75)
-nameString = "blue wyrmling"
+[node name="shapeHandler" parent="CanvasLayer" instance=ExtResource("7_ycuix")]
+offset_left = 60.0
+offset_top = -9.0
+offset_right = -908.0
+offset_bottom = -598.0
 
-[node name="sword kobold" parent="." instance=ExtResource("4_iwre2")]
-position = Vector2(455, 232)
-scale = Vector2(0.75, 0.75)
-nameString = "sword kobold"
-
-[node name="bow kobold" parent="." instance=ExtResource("4_iwre2")]
-position = Vector2(568, 264)
-scale = Vector2(0.75, 0.75)
-nameString = "bow kobold"
-
-[node name="mage kobold" parent="." instance=ExtResource("4_iwre2")]
-position = Vector2(520, 296)
-scale = Vector2(0.75, 0.75)
-nameString = "mage kobold"
-
-[node name="giant spider" parent="." instance=ExtResource("4_iwre2")]
-position = Vector2(472, 296)
-scale = Vector2(0.75, 0.75)
-nameString = "giant spider"
-
-[node name="Movable Object" parent="." instance=ExtResource("6_e3b76")]
+[node name="enemy_handler" parent="CanvasLayer" instance=ExtResource("7_il3h0")]
+offset_left = 4.0
+offset_top = -5.0
+offset_right = -1074.0
+offset_bottom = -604.0
 
 [node name="cursor" type="Sprite2D" parent="."]
 texture_filter = 1
+position = Vector2(28, 23)
 texture = ExtResource("2_w0fkh")
 region_enabled = true
 region_rect = Rect2(224, 0, 32, 32)
