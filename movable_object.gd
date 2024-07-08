@@ -51,6 +51,10 @@ func _process(delta):
 		held = true
 		selected = true
 		pickedUp.emit() #handler turns off all other objects
+	if(Input.is_action_pressed("scaleUp") and selected):
+		scale+=Vector2(0.05,0.05)
+	if(Input.is_action_pressed("scaleDown") and selected):
+		scale+=-Vector2(0.05,0.05)
 	#until mouse button is let go, object is attached to mouse
 	if (held):
 		position = get_global_mouse_position()
@@ -101,6 +105,8 @@ func _on_rotate_circle_mouse_exited():
 	if(!rotating):
 		rotatable = false
 		noRotate.emit()
+	
+	
 #manually set the visuals for each "moveable object" in sprite sheet. There's probably better ways to do this?
 func name_handler():
 	if nameString == "":
@@ -129,6 +135,9 @@ func name_handler():
 	if nameString == "tile":
 		rect = Rect2(0,0,16,16)
 		
+
+
+
 
 
 

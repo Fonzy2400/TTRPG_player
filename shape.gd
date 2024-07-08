@@ -7,6 +7,7 @@ extends Polygon2D
 #declare global variables here
 @onready var obj = get_parent() #adding moveable object node for rotation and movement control
 @onready var pixelScale = 16
+var shapeCone = false
 
 
 
@@ -24,17 +25,19 @@ func triangle():
 func square(length): #create square with given side length
 	var squarePoints = nSidedPoly(4,length/5*16/sqrt(2),true) 
 	set_polygon(squarePoints)
+	#scale = Vector2(5,5)
 	rotate(PI/4)
 	#obj.add_child(square)
-	obj.get_node("GrabCircle/grabber").scale = Vector2(length*5/16,length*5/16)
-	obj.get_node("RotateCircle/rotater").scale = Vector2(length*5/16,length*5/16)
+	obj.get_node("GrabCircle/grabber").scale = Vector2(length*5/16*2,length*5/16*2)
+	obj.get_node("RotateCircle/rotater").scale = Vector2(length*5/16*2,length*5/16*2)
+	#obj.get_node("ScaleSquare/scaler").position.x = length
 func cone(length):
 	color = Color(0.8,0.2,0.2,0.5)
 	#according to D&D rules the cone is an isoscles right triangle
 	#create base 45,45,90 triangle with standard dimensions
 	var points = PackedVector2Array([Vector2(0,0),
-									Vector2(0,sqrt(2)*length*pixelScale/5),
-									Vector2(sqrt(2)*length*pixelScale/5,0)])
+									Vector2(0,sqrt(2)*length*pixelScale*5/16),
+									Vector2(sqrt(2)*length*pixelScale*5/16,0)])
 	set_polygon(points)
 	#create circle for rotation node of spell casting cone
 	var circle = Polygon2D.new()
@@ -42,9 +45,12 @@ func cone(length):
 	circle.set_polygon(circlePoints)
 	circle.color = Color(0.8,0.2,0.2)
 	get_parent().add_child.call_deferred(circle)
+	shapeCone = true
 	
 	pass
-func circle():
+func circle(radius):
+	var circlePoints = nSidedPoly(200,radius,false)
+	set_polygon(circlePoints)
 	pass
 func nSidedPoly(sides,radius,preset):
 	var incrementAngle = 2*PI/sides #calculates angle to rotate by to generate N regular polygons units in radians
