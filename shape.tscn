@@ -5,5 +5,5 @@
 
 [node name="Movable Object" instance=ExtResource("2_77fuq")]
 
-[node name="shape" type="Polygon2D" parent="." index="3"]
+[node name="shape" type="Polygon2D" parent="." index="0"]
 script = ExtResource("1_x6cav")

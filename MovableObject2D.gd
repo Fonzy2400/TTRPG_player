@@ -14,15 +14,7 @@ signal endRotate
 var previousMousePosition #needed for calculationg mouse angular velocity
 
 # Called when the node enters the scene tree for the first time.
-func _enter_tree():
-	var sprite = Sprite2D.new()
-	sprite.name = "sprite"
-	sprite.texture = load("res://Pixel art/D&D assets.png") #sprites generated as atlas map
-	sprite.region_enabled = true #allows a selection of a part of image
-	sprite.texture_filter = TEXTURE_FILTER_NEAREST # fixes blur on pixel art (why is this not the default?!)
-	var rect = name_handler() # selects sprite region and scale based off of name of movable object
-	sprite.region_rect = rect
-	add_child(sprite)
+func _ready():
 	var grabCircle = Area2D.new()
 	grabCircle.name = "grabCircle"
 	add_child(grabCircle)
@@ -34,6 +26,14 @@ func _enter_tree():
 	$grabCircle/grabber.shape = circle
 	grabCircle.connect("mouse_entered",_on_area_2d_mouse_entered)
 	grabCircle.connect("mouse_exited",_on_area_2d_mouse_exited)
+	var sprite = Sprite2D.new()
+	sprite.name = "sprite"
+	sprite.texture = load("res://Pixel art/D&D assets.png") #sprites generated as atlas map
+	sprite.region_enabled = true #allows a selection of a part of image
+	sprite.texture_filter = TEXTURE_FILTER_NEAREST # fixes blur on pixel art (why is this not the default?!)
+	var rect = name_handler() # selects sprite region and scale based off of name of movable object
+	sprite.region_rect = rect
+	add_child(sprite)
 	var rotateCircle = Area2D.new()
 	rotateCircle.name = "rotateCircle"
 	add_child(rotateCircle)
@@ -43,8 +43,10 @@ func _enter_tree():
 	circle = CircleShape2D.new()
 	circle.radius = 14
 	$rotateCircle/rotator.shape = circle
+	$rotateCircle/rotator.scale = $grabCircle/grabber.scale
 	rotateCircle.connect("mouse_entered",_on_rotate_circle_mouse_entered)
 	rotateCircle.connect("mouse_exited",_on_rotate_circle_mouse_exited)
+
 	#$RotateCircle/rotater.scale = $GrabCircle/grabber.scale
 	#connect signals to main game handler only if the main game handler exists. 
 	#This allows scenes to be run by themselves
@@ -142,14 +144,14 @@ func name_handler():
 		scale = Vector2(1,1)
 	if nameString == "giant spider":
 		rect = Rect2(192,0,32,32)
-		$"GrabCircle"/grabber.scale = Vector2(4,4)
+		$grabCircle/grabber.scale = Vector2(2,2)
 	#example explanation, applies to all entries
 	if nameString == "blue wyrmling":
 		rect = Rect2(0,16,64,64) #selects visual from atlas
 		scale = Vector2(0.5,0.5) #sets size of visual
-		$"GrabCircle"/grabber.scale = Vector2(6,6) #sets size of collision box for picking up
+		$grabCircle/grabber.scale = Vector2(2,2) #sets size of collision box for picking up
 	if nameString == "red wyrmling":
-		$"GrabCircle"/grabber.scale = Vector2(6,6)
+		$grabCircle/grabber.scale = Vector2(2,2)
 		rect = Rect2(64,32,64,64)
 		scale = Vector2(0.5,0.5)
 	if nameString == "tile":

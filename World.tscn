@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dq5v1it86kno5" path="res://enemy_handler.tscn" id="7_il3h0"]
 [ext_resource type="PackedScene" uid="uid://b38dy6veamejl" path="res://player.tscn" id="7_x6yfp"]
 [ext_resource type="PackedScene" uid="uid://w08r33mh2o8i" path="res://shape_handler.tscn" id="7_ycuix"]
-[ext_resource type="Script" path="res://MovableObject2D.gd" id="8_8xt0e"]
+[ext_resource type="PackedScene" uid="uid://bc6ynutmbq71w" path="res://movable_object.tscn" id="8_tw1hr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7w5nx"]
 texture = ExtResource("2_w0fkh")
@@ -123,6 +123,6 @@ script = ExtResource("6_ypqia")
 [node name="Player" parent="." instance=ExtResource("7_x6yfp")]
 position = Vector2(472, 261)
 
-[node name="MoveableObject2D" type="Node2D" parent="."]
-script = ExtResource("8_8xt0e")
+[node name="Movable Object" parent="." instance=ExtResource("8_tw1hr")]
+position = Vector2(549, 265)
 nameString = "melee kobold"
