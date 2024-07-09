@@ -1,31 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bc6ynutmbq71w"]
+[gd_scene load_steps=2 format=3 uid="uid://bc6ynutmbq71w"]
 
-[ext_resource type="Script" path="res://movable_object.gd" id="1_su0wl"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_3edks"]
-radius = 5.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_mebya"]
-radius = 7.0
+[ext_resource type="Script" path="res://MovableObject2D.gd" id="1_sd1ub"]
 
 [node name="Movable Object" type="Node2D"]
-script = ExtResource("1_su0wl")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-
-[node name="GrabCircle" type="Area2D" parent="."]
-
-[node name="grabber" type="CollisionShape2D" parent="GrabCircle"]
-process_priority = 1
-process_physics_priority = 1
-shape = SubResource("CircleShape2D_3edks")
-
-[node name="RotateCircle" type="Area2D" parent="."]
-
-[node name="rotater" type="CollisionShape2D" parent="RotateCircle"]
-shape = SubResource("CircleShape2D_mebya")
-
-[connection signal="mouse_entered" from="GrabCircle" to="." method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="GrabCircle" to="." method="_on_area_2d_mouse_exited"]
-[connection signal="mouse_entered" from="RotateCircle" to="." method="_on_rotate_circle_mouse_entered"]
-[connection signal="mouse_exited" from="RotateCircle" to="." method="_on_rotate_circle_mouse_exited"]
+script = ExtResource("1_sd1ub")

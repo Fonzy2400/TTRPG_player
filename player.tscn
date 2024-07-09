@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b38dy6veamejl"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_8efhh"]
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_8efhh")
+nameString = "melee kobold"

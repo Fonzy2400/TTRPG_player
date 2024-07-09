@@ -1,11 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://brv8r1qq00oo6"]
+[gd_scene load_steps=11 format=3 uid="uid://brv8r1qq00oo6"]
 
 [ext_resource type="Script" path="res://World.gd" id="1_6mxbr"]
 [ext_resource type="Texture2D" uid="uid://bq3kaalfvjxx6" path="res://Pixel art/D&D assets.png" id="2_w0fkh"]
 [ext_resource type="Script" path="res://Camera2D.gd" id="3_ou46f"]
 [ext_resource type="Script" path="res://cursor.gd" id="6_ypqia"]
 [ext_resource type="PackedScene" uid="uid://dq5v1it86kno5" path="res://enemy_handler.tscn" id="7_il3h0"]
+[ext_resource type="PackedScene" uid="uid://b38dy6veamejl" path="res://player.tscn" id="7_x6yfp"]
 [ext_resource type="PackedScene" uid="uid://w08r33mh2o8i" path="res://shape_handler.tscn" id="7_ycuix"]
+[ext_resource type="Script" path="res://MovableObject2D.gd" id="8_8xt0e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7w5nx"]
 texture = ExtResource("2_w0fkh")
@@ -117,3 +119,10 @@ texture = ExtResource("2_w0fkh")
 region_enabled = true
 region_rect = Rect2(224, 0, 32, 32)
 script = ExtResource("6_ypqia")
+
+[node name="Player" parent="." instance=ExtResource("7_x6yfp")]
+position = Vector2(472, 261)
+
+[node name="MoveableObject2D" type="Node2D" parent="."]
+script = ExtResource("8_8xt0e")
+nameString = "melee kobold"
