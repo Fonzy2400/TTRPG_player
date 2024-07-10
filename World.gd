@@ -1,16 +1,34 @@
 extends Node2D
+
 #main handler for the actual game setup
 #TODO: Make it so that the object displayed at the top is the one that gets picked up when creatures overlap
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	#at start turns off visibility of all tiles in tile map... maybe
+	var tilesShown = $shows
+	var stored = tilesShown.duplicate()
+	stored.visible = false
+	stored.name = "stored"
+	add_child(stored)
+	var coords = tilesShown.get_used_cells(0)
+	for coord in coords:
+		tilesShown.set_cell(0,coord,0,Vector2i(3,0),0)
+		var storagePoint = coord
+		var atlasCoords = stored.get_cell_atlas_coords(0,storagePoint)
+		tilesShown.set_cell(0,storagePoint,0,atlasCoords,0)
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	var tiles = $shows
+	var used = tiles.get_used_cells(0)
+	var tile = used[0]
+	var point = tiles.map_to_local(tile)
+	var globalPoint = to_global(point)
+	#print(globalPoint)
 #when an object is picked up, all other objects turned off. 
 func _on_picked_up():
 	var objects = get_tree().get_nodes_in_group("Movables")
@@ -46,3 +64,15 @@ func multiple_grabs_handler():
 		#check if any objects are held, if they are increase the counter
 		if(object.held):
 			held_counter+=1
+func fuck_up_that_tile(Rid): #rename incoming, but it's late and I'm mad
+	var tiles = $shows
+	var coords = tiles.get_coords_for_body_rid(Rid)
+	tiles.set_cell(0,coords,0,Vector2i(0,1),0)
+	pass
+func restore_that_tile(Rid):
+	var tiles = $shows
+	var stored = $stored
+	var coords = tiles.get_coords_for_body_rid(Rid)
+	var atlasCoords = stored.get_cell_atlas_coords(0,coords)
+	tiles.set_cell(0,coords,0,atlasCoords,0)
+	pass

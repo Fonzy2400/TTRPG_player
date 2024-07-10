@@ -27,9 +27,8 @@ func square(length): #create square with given side length
 	set_polygon(squarePoints)
 	#scale = Vector2(5,5)
 	rotate(PI/4)
-	#obj.add_child(square)
-	obj.get_node("GrabCircle/grabber").scale = Vector2(length*5/16*2,length*5/16*2)
-	obj.get_node("RotateCircle/rotater").scale = Vector2(length*5/16*2,length*5/16*2)
+	obj.get_node("grabCircle/grabber").scale = Vector2(length*5/16*2,length*5/16*2)
+	obj.get_node("rotateCircle/rotator").scale = Vector2(length*5/16*2,length*5/16*2)
 	#obj.get_node("ScaleSquare/scaler").position.x = length
 func cone(length):
 	color = Color(0.8,0.2,0.2,0.5)
