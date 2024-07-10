@@ -41,8 +41,8 @@ func _process(delta):
 		self.zoom.y += zvelocity
 		#zoom out just changes zoom scale at linear rate, no need to move camera
 	if Input.is_action_just_released("zoomOut"):
-		self.zoom.x += -2*zvelocity
-		self.zoom.y += -2*zvelocity
+		self.zoom.x += -0.5*zvelocity
+		self.zoom.y += -0.5*zvelocity
 		#self.position = get_global_mouse_position()
 	#when timer expires, allows camera to focus on mouse again while zooming in
 	if timer > 0.5:

@@ -17,12 +17,12 @@ script = ExtResource("1_8efhh")
 nameString = "melee kobold"
 
 [node name="visibleArea" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 4
+collision_layer = 6
+collision_mask = 6
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="visibleArea"]
 position = Vector2(1, 0)
-polygon = PackedVector2Array(-3, -48, -57, 17, 49, 47, 80, -22)
+build_mode = 1
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 visible = false
@@ -33,7 +33,9 @@ texture_scale = 1.81
 height = 10.0
 
 [node name="Shape" type="Polygon2D" parent="."]
-visible = false
+color = Color(1, 1, 1, 0.282353)
+
+[node name="LinesBin" type="Node2D" parent="."]
 
 [connection signal="body_shape_entered" from="visibleArea" to="." method="_on_visible_area_body_shape_entered"]
 [connection signal="body_shape_exited" from="visibleArea" to="." method="_on_visible_area_body_shape_exited"]

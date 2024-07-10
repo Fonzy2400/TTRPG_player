@@ -1,7 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://dbx2u4dj6gbeb"]
+[gd_scene load_steps=3 format=3 uid="uid://dbx2u4dj6gbeb"]
 
 [ext_resource type="Script" path="res://sand_box.gd" id="1_crfn7"]
+[ext_resource type="PackedScene" uid="uid://b38dy6veamejl" path="res://player.tscn" id="2_3ip0c"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_crfn7")
 nameString = "melee kobold"
+
+[node name="Player" parent="." instance=ExtResource("2_3ip0c")]
+
+[node name="Player2" parent="." instance=ExtResource("2_3ip0c")]
+position = Vector2(489, 246)
