@@ -28,6 +28,7 @@ func _ready():
 	grabCircle.connect("mouse_exited",_on_area_2d_mouse_exited)
 	var sprite = Sprite2D.new()
 	sprite.name = "sprite"
+	sprite.modulate = Color(0.2,0.2,0.2,1)
 	sprite.texture = load("res://Pixel art/D&D assets.png") #sprites generated as atlas map
 	sprite.region_enabled = true #allows a selection of a part of image
 	sprite.texture_filter = TEXTURE_FILTER_NEAREST # fixes blur on pixel art (why is this not the default?!)
@@ -52,13 +53,9 @@ func _ready():
 	#This allows scenes to be run by themselves
 	if get_parent().name == "World":
 		connect("pickedUp",get_parent()._on_picked_up)
-	if get_parent().name == "World":
 		connect("putDown",get_parent()._on_put_down)
-	if get_parent().name == "World":
 		connect("canRotate",$"../cursor"._on_can_rotate)
-	if get_parent().name == "World":
 		connect("noRotate",$"../cursor"._on_no_rotate)
-	if get_parent().name == "World":
 		connect("startRotate",$"../cursor"._on_start_rotate)
 	#all movable objects are part of group Movables, this allows for functions to be called on the group all at once
 	add_to_group("Movables")

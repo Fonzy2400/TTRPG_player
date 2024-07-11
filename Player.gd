@@ -98,3 +98,7 @@ func _on_visible_area_body_shape_entered(body_rid, body, body_shape_index, local
 func _on_visible_area_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):
 	pass
 	#tileBeBack.emit(body_rid)
+
+
+func _on_magic_eraser_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):
+	tileBeGone.emit(body_rid)

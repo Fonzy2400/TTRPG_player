@@ -2,7 +2,7 @@ extends Node2D
 
 #main handler for the actual game setup
 #TODO: Make it so that the object displayed at the top is the one that gets picked up when creatures overlap
-
+var dark = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -73,8 +73,8 @@ func multiple_grabs_handler():
 func fuck_up_that_tile(Rid): #rename incoming, but it's late and I'm mad
 	var tiles = $shows
 	var coords = tiles.get_coords_for_body_rid(Rid)
-	tiles.set_cell(0,coords,0,Vector2i(0,1),0)
-	tiles.set_cell(1,coords,0,Vector2i(0,1),0)
+	tiles.set_cell(0,coords,0,Vector2i(3,3),0)
+	tiles.set_cell(1,coords,0,Vector2i(3,3),0)
 	pass
 func restore_that_tile(Rid):
 	var tiles = $shows
