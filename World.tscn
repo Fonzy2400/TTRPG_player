@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://brv8r1qq00oo6"]
+[gd_scene load_steps=21 format=3 uid="uid://brv8r1qq00oo6"]
 
 [ext_resource type="Script" path="res://World.gd" id="1_6mxbr"]
 [ext_resource type="Texture2D" uid="uid://yac0neece40c" path="res://D&D assets.png" id="2_1gks3"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://dq5v1it86kno5" path="res://enemy_handler.tscn" id="7_il3h0"]
 [ext_resource type="PackedScene" uid="uid://b38dy6veamejl" path="res://player.tscn" id="7_x6yfp"]
 [ext_resource type="PackedScene" uid="uid://w08r33mh2o8i" path="res://shape_handler.tscn" id="7_ycuix"]
-[ext_resource type="PackedScene" uid="uid://bc6ynutmbq71w" path="res://movable_object.tscn" id="8_tw1hr"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_omr64"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -420,7 +419,7 @@ texture = ExtResource("2_1gks3")
 8:2/0/physics_layer_0/angular_velocity = 0.0
 8:2/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 8:2/0/physics_layer_1/angular_velocity = 0.0
-8:2/0/physics_layer_1/polygon_0/points = PackedVector2Array(-9.4375, -9, 9.0625, -9, 9.1875, 9, -9.8125, 8.75)
+8:2/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:2/0 = 0
 4:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 4:2/0/physics_layer_0/angular_velocity = 0.0
@@ -433,6 +432,13 @@ texture = ExtResource("2_1gks3")
 3:3/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 3:3/0/physics_layer_1/angular_velocity = 0.0
 3:3/0/physics_layer_1/polygon_0/points = PackedVector2Array(-9.4375, -9, 9.0625, -9, 9.1875, 9, -9.8125, 8.75)
+8:3/0 = 0
+8:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+8:3/0/physics_layer_0/angular_velocity = 0.0
+8:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:3/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+8:3/0/physics_layer_1/angular_velocity = 0.0
+8:3/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_p6p6w"]
 occlusion_layer_0/light_mask = 1
@@ -485,7 +491,3 @@ script = ExtResource("6_ypqia")
 
 [node name="Player" parent="." instance=ExtResource("7_x6yfp")]
 position = Vector2(501, 824)
-
-[node name="Movable Object" parent="." instance=ExtResource("8_tw1hr")]
-position = Vector2(549, 265)
-nameString = "melee kobold"
