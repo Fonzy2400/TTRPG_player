@@ -30,7 +30,7 @@ build_mode = 1
 energy = 4.0
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_u10ws")
-texture_scale = 1.81
+texture_scale = 8.0
 height = 10.0
 
 [node name="Shape" type="Polygon2D" parent="."]
