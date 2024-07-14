@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://d08j7a1ibr8gk"]
+
+[ext_resource type="Script" path="res://turn_order_tile.gd" id="1_3t265"]
+
+[node name="tile" type="LineEdit"]
+offset_right = 200.0
+offset_bottom = 31.0
+scale = Vector2(0.776, 1.08428)
+text = "25 what's up"
+expand_to_text_length = true
+script = ExtResource("1_3t265")

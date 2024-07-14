@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlm4wp1coycpi"]
+
+[ext_resource type="Script" path="res://initiative_handler.gd" id="1_0pgyy"]
+
+[node name="initiative_handler" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 395.0
+offset_bottom = 93.0
+script = ExtResource("1_0pgyy")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+offset_right = 395.0
+offset_bottom = 26.0
+text = "Combat Order:"
+
+[node name="player_order" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 25.0
+offset_right = 40.0
+offset_bottom = 65.0

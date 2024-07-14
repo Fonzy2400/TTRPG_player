@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://brv8r1qq00oo6"]
+[gd_scene load_steps=22 format=3 uid="uid://brv8r1qq00oo6"]
 
 [ext_resource type="Script" path="res://World.gd" id="1_6mxbr"]
 [ext_resource type="Texture2D" uid="uid://yac0neece40c" path="res://D&D assets.png" id="2_1gks3"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bkltkbteleenc" path="res://player_handler.tscn" id="6_ocs1r"]
 [ext_resource type="Script" path="res://cursor.gd" id="6_ypqia"]
 [ext_resource type="PackedScene" uid="uid://dq5v1it86kno5" path="res://enemy_handler.tscn" id="7_il3h0"]
+[ext_resource type="PackedScene" uid="uid://dlm4wp1coycpi" path="res://initiative_handler.tscn" id="7_ocy4l"]
 [ext_resource type="PackedScene" uid="uid://w08r33mh2o8i" path="res://shape_handler.tscn" id="7_ycuix"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_omr64"]
@@ -512,6 +513,12 @@ offset_left = 230.0
 offset_top = 7.0
 offset_right = 303.0
 offset_bottom = 38.0
+
+[node name="initiative_handler" parent="CanvasLayer" instance=ExtResource("7_ocy4l")]
+offset_left = 1000.0
+offset_top = 10.0
+offset_right = 1395.0
+offset_bottom = 103.0
 
 [node name="cursor" type="Sprite2D" parent="."]
 texture_filter = 1
