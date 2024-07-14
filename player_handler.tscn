@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkltkbteleenc"]
+
+[ext_resource type="Script" path="res://player_handler.gd" id="1_05bbs"]
+
+[node name="MenuButton" type="MenuButton"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Players"
+item_count = 6
+popup/item_0/text = "Avalee"
+popup/item_0/id = 0
+popup/item_1/text = "Chardoney"
+popup/item_1/id = 1
+popup/item_2/text = "Aellys"
+popup/item_2/id = 2
+popup/item_3/text = "Temeris"
+popup/item_3/id = 3
+popup/item_4/text = "Nico"
+popup/item_4/id = 4
+popup/item_5/text = "Sylvir"
+popup/item_5/id = 5
+script = ExtResource("1_05bbs")

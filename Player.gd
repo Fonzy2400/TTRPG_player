@@ -1,5 +1,6 @@
 extends MoveableObject2D
-var count
+#@export var stringName: String
+var count#
 var radius
 var isColliding = false
 signal tileBeGone
@@ -10,6 +11,7 @@ var collidingCheck = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	super._ready()
+	player_name_handler()
 	var circ = $rotateCircle
 	circ.monitoring = false
 	if get_parent().name == "World":
@@ -17,7 +19,7 @@ func _ready():
 		connect("tileBeBack",get_parent().restore_that_tile)
 	var points = PackedVector2Array([])
 	count = 50
-	radius = 182
+	radius = 198
 	for i in range(count):
 		var line = RayCast2D.new()
 		line.set_collision_mask(2)
@@ -29,7 +31,9 @@ func _ready():
 		points.append(point)
 	$visibleArea/CollisionPolygon2D.set_polygon(points)
 	$Shape.set_polygon(points)
-	#set_physics_process(false)
+
+
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -83,6 +87,37 @@ func _physics_process(delta):
 		new_circle()
 	
 
+func player_name_handler():
+		if nameString == "Chardoney":
+			$sprite.region_rect = Rect2(48,96,48,48)
+			$sprite.scale = Vector2(0.33,0.33)
+			$rotateCircle.scale = Vector2(0.33,0.33)
+			$grabCircle.scale = Vector2(0.33,0.33)
+		if nameString == "Aellys":
+			$sprite.region_rect = Rect2(0,96,48,48)
+			$sprite.scale = Vector2(0.33,0.33)
+			$rotateCircle.scale = Vector2(0.33,0.33)
+			$grabCircle.scale = Vector2(0.33,0.33)
+		if nameString == "Nico":
+			$sprite.region_rect = Rect2(96,96,48,48)
+			$sprite.scale = Vector2(0.33,0.33)
+			$rotateCircle.scale = Vector2(0.33,0.33)
+			$grabCircle.scale = Vector2(0.33,0.33)
+		if nameString == "Temeris":
+			$sprite.region_rect = Rect2(144,96,48,48)
+			$sprite.scale = Vector2(0.33,0.33)
+			$rotateCircle.scale = Vector2(0.33,0.33)
+			$grabCircle.scale = Vector2(0.33,0.33)
+		if nameString == "Sylvir":
+			$sprite.region_rect = Rect2(192,96,48,48)
+			$sprite.scale = Vector2(0.33,0.33)
+			$rotateCircle.scale = Vector2(0.33,0.33)
+			$grabCircle.scale = Vector2(0.33,0.33)
+		if nameString == "Avaleigh":
+			$sprite.region_rect = Rect2(0,160,48,48)
+			$sprite.scale = Vector2(0.33,0.33)
+			$rotateCircle.scale = Vector2(0.33,0.33)
+			$grabCircle.scale = Vector2(0.33,0.33)
 
 
 

@@ -28,8 +28,8 @@ func _ready():
 	grabCircle.connect("mouse_exited",_on_area_2d_mouse_exited)
 	var sprite = Sprite2D.new()
 	sprite.name = "sprite"
-	sprite.modulate = Color(0.2,0.2,0.2,1)
-	sprite.texture = load("res://Pixel art/D&D assets.png") #sprites generated as atlas map
+	#sprite.modulate = Color(0.2,0.2,0.2,1)
+	sprite.texture = load("res://D&D assets.png") #sprites generated as atlas map
 	sprite.region_enabled = true #allows a selection of a part of image
 	sprite.texture_filter = TEXTURE_FILTER_NEAREST # fixes blur on pixel art (why is this not the default?!)
 	var rect = name_handler() # selects sprite region and scale based off of name of movable object
@@ -128,8 +128,7 @@ func _on_rotate_circle_mouse_exited():
 #manually set the visuals for each "moveable object" in sprite sheet. There's probably better ways to do this?
 func name_handler():
 	var rect
-	if nameString == "":
-		rect = Rect2(0,0,0,0)
+	rect = Rect2(0,0,0,0)
 	if nameString == "ranged kobold":
 		rect = Rect2(160,0,16,16)
 		scale = Vector2(1,1)

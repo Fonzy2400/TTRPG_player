@@ -27,6 +27,7 @@ position = Vector2(1, 0)
 build_mode = 1
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
 energy = 4.0
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_u10ws")
