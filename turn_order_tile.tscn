@@ -6,6 +6,6 @@
 offset_right = 200.0
 offset_bottom = 31.0
 scale = Vector2(0.776, 1.08428)
-text = "25 what's up"
+text = "00 name"
 expand_to_text_length = true
 script = ExtResource("1_3t265")
