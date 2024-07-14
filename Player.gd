@@ -91,33 +91,33 @@ func player_name_handler():
 		if nameString == "Chardoney":
 			$sprite.region_rect = Rect2(48,96,48,48)
 			$sprite.scale = Vector2(0.33,0.33)
-			$rotateCircle.scale = Vector2(0.33,0.33)
-			$grabCircle.scale = Vector2(0.33,0.33)
+			$rotateCircle.scale = Vector2(0.5,0.5)
+			$grabCircle.scale = Vector2(0.5,0.5)
 		if nameString == "Aellys":
 			$sprite.region_rect = Rect2(0,96,48,48)
 			$sprite.scale = Vector2(0.33,0.33)
-			$rotateCircle.scale = Vector2(0.33,0.33)
-			$grabCircle.scale = Vector2(0.33,0.33)
+			$rotateCircle.scale = Vector2(0.5,0.5)
+			$grabCircle.scale = Vector2(0.5,0.5)
 		if nameString == "Nico":
 			$sprite.region_rect = Rect2(96,96,48,48)
-			$sprite.scale = Vector2(0.33,0.33)
-			$rotateCircle.scale = Vector2(0.33,0.33)
-			$grabCircle.scale = Vector2(0.33,0.33)
+			$sprite.scale = Vector2(0.5,0.5)
+			$rotateCircle.scale = Vector2(0.5,0.5)
+			$grabCircle.scale = Vector2(0.5,0.5)
 		if nameString == "Temeris":
 			$sprite.region_rect = Rect2(144,96,48,48)
 			$sprite.scale = Vector2(0.33,0.33)
-			$rotateCircle.scale = Vector2(0.33,0.33)
-			$grabCircle.scale = Vector2(0.33,0.33)
+			$rotateCircle.scale = Vector2(0.5,0.5)
+			$grabCircle.scale = Vector2(0.5,0.5)
 		if nameString == "Sylvir":
 			$sprite.region_rect = Rect2(192,96,48,48)
 			$sprite.scale = Vector2(0.33,0.33)
-			$rotateCircle.scale = Vector2(0.33,0.33)
-			$grabCircle.scale = Vector2(0.33,0.33)
+			$rotateCircle.scale = Vector2(0.5,0.5)
+			$grabCircle.scale = Vector2(0.5,0.5)
 		if nameString == "Avaleigh":
 			$sprite.region_rect = Rect2(0,160,48,48)
 			$sprite.scale = Vector2(0.33,0.33)
-			$rotateCircle.scale = Vector2(0.33,0.33)
-			$grabCircle.scale = Vector2(0.33,0.33)
+			$rotateCircle.scale = Vector2(0.5,0.5)
+			$grabCircle.scale = Vector2(0.5,0.5)
 
 
 
