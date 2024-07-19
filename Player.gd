@@ -2,11 +2,11 @@ extends MoveableObject2D
 #@export var stringName: String
 var count
 var radius
-var fakeRadius
 var isColliding = false
 signal tileBeGone
 signal tileBeBack
 var collidingCheck = []
+var prevSelected = false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -18,23 +18,7 @@ func _ready():
 	if get_parent().name == "World":
 		connect("tileBeGone",get_parent().fuck_up_that_tile)
 		connect("tileBeBack",get_parent().restore_that_tile)
-	var points = PackedVector2Array([])
-	count = 50
-	radius = 198
-	fakeRadius = 50
-	for i in range(count):
-		var line = RayCast2D.new()
-		var fakeLine = RayCast2D.new()
-		fakeLine.set_collision_mask(4)
-		print(fakeLine.get_collision_mask())
-		line.set_collision_mask(2)
-		$LinesBin.add_child(line)
-		$FakeLinesBin.add_child(fakeLine)
-		var point = radius*Vector2(cos(i*2*PI/count),sin(i*2*PI/count))
-		var point2 = radius*Vector2(cos(i*2*PI/count),sin(i*2*PI/count))
-		#need to move them slightly away from each other so they don't just all detect at zero.
-		line.target_position = point
-		fakeLine.target_position = point2
+	create_feelers()
 	collision()
 
 	
@@ -43,20 +27,29 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	super._process(delta)
+	if selected:
+		$Label.text = "selected"
+	else:
+		$Label.text = "not selected"
+	if selected != prevSelected:
+		if selected:
+			create_feelers()
 	if(!selected):
 		var points = PackedVector2Array([])
-		#$visibleArea/CollisionPolygon2D.set_polygon(points)
+		for child in $LinesBin.get_children():
+			$LinesBin.remove_child(child)
 		$Shape.set_polygon(points)
 	if rotatable == true:
 		rotatable = false
-	for line in $FakeLinesBin.get_children():
+	for line in $LinesBin.get_children():
 		if line.is_colliding():
 			tileBeBack.emit(line.get_collider_rid())
+	prevSelected = selected
 	
 
 func collision():
 	var points = PackedVector2Array([])
-	for line in $FakeLinesBin.get_children():
+	for line in $LinesBin.get_children():
 		if line.is_colliding():
 			points.append(line.get_collision_point()-position)
 		else:
@@ -94,7 +87,19 @@ func _physics_process(delta):
 			pass
 			new_circle()
 	
-
+func create_feelers():
+	var points = PackedVector2Array([])
+	count = 50
+	radius = 198
+	for i in range(count):
+		var line = RayCast2D.new()
+		line.set_collision_mask(4)
+		$LinesBin.add_child(line)
+		var point = radius*Vector2(cos(i*2*PI/count),sin(i*2*PI/count))
+		#need to move them slightly away from each other so they don't just all detect at zero.
+		line.target_position = point
+		#fakeLine.target_position = point2
+	
 func player_name_handler():
 		if nameString == "Chardoney":
 			$sprite.region_rect = Rect2(48,96,48,48)
