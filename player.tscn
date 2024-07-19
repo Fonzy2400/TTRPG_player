@@ -52,6 +52,8 @@ visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 
+[node name="FakeLinesBin" type="Node2D" parent="."]
+
 [connection signal="body_shape_entered" from="visibleArea" to="." method="_on_visible_area_body_shape_entered"]
 [connection signal="body_shape_exited" from="visibleArea" to="." method="_on_visible_area_body_shape_exited"]
 [connection signal="body_shape_exited" from="MagicEraser" to="." method="_on_magic_eraser_body_shape_exited"]

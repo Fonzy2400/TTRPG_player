@@ -2,6 +2,7 @@ extends MoveableObject2D
 #@export var stringName: String
 var count
 var radius
+var fakeRadius
 var isColliding = false
 signal tileBeGone
 signal tileBeBack
@@ -19,16 +20,22 @@ func _ready():
 		connect("tileBeBack",get_parent().restore_that_tile)
 	var points = PackedVector2Array([])
 	count = 50
-	radius = 50#198
+	radius = 198
+	fakeRadius = 50
 	for i in range(count):
 		var line = RayCast2D.new()
+		var fakeLine = RayCast2D.new()
+		fakeLine.set_collision_mask(4)
+		print(fakeLine.get_collision_mask())
 		line.set_collision_mask(2)
 		$LinesBin.add_child(line)
-		collidingCheck.append(line.is_colliding())
+		$FakeLinesBin.add_child(fakeLine)
 		var point = radius*Vector2(cos(i*2*PI/count),sin(i*2*PI/count))
+		var point2 = radius*Vector2(cos(i*2*PI/count),sin(i*2*PI/count))
 		#need to move them slightly away from each other so they don't just all detect at zero.
 		line.target_position = point
-	#collision()
+		fakeLine.target_position = point2
+	collision()
 
 	
 
@@ -38,30 +45,30 @@ func _process(delta):
 	super._process(delta)
 	if(!selected):
 		var points = PackedVector2Array([])
-		$visibleArea/CollisionPolygon2D.set_polygon(points)
+		#$visibleArea/CollisionPolygon2D.set_polygon(points)
 		$Shape.set_polygon(points)
 	if rotatable == true:
 		rotatable = false
+	for line in $FakeLinesBin.get_children():
+		if line.is_colliding():
+			tileBeBack.emit(line.get_collider_rid())
 	
-
 
 func collision():
 	var points = PackedVector2Array([])
-	for line in $LinesBin.get_children():
+	for line in $FakeLinesBin.get_children():
 		if line.is_colliding():
 			points.append(line.get_collision_point()-position)
 		else:
 			points.append(line.target_position)
-	set_physics_process(false)
-	$visibleArea/CollisionPolygon2D.set_polygon(points)
-	set_physics_process(true)
 	$Shape.set_polygon(points)
+
 		
 func new_circle():
 	var points = PackedVector2Array([])
 	for line in $LinesBin.get_children():
 		points.append(line.target_position)
-	$visibleArea/CollisionPolygon2D.set_polygon(points)
+	#$visibleArea/CollisionPolygon2D.set_polygon(points)
 	$Shape.set_polygon(points)
 
 func _physics_process(delta):
