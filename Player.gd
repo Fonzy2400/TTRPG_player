@@ -12,6 +12,7 @@ var prevSelected = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	super._ready()
+	create_deleters()
 	player_name_handler()
 	var circ = $rotateCircle
 	circ.monitoring = false
@@ -44,6 +45,9 @@ func _process(delta):
 	for line in $LinesBin.get_children():
 		if line.is_colliding():
 			tileBeBack.emit(line.get_collider_rid())
+	for line in $DeleterLinesBin.get_children():
+		if line.is_colliding():
+			tileBeGone.emit(line.get_collider_rid())
 	prevSelected = selected
 	
 
@@ -99,6 +103,20 @@ func create_feelers():
 		#need to move them slightly away from each other so they don't just all detect at zero.
 		line.target_position = point
 		#fakeLine.target_position = point2
+		
+func create_deleters():
+	var count = 200
+	var radius1 = 50
+	var radius2 = 400
+	for i in range(count):
+		var test = RayCast2D.new()
+		test.set_collision_mask_value(4,false)
+		test.set_collision_mask_value(1,true)
+		var point1 = radius1*Vector2(cos(i*2*PI/count),sin(i*2*PI/count))
+		var point2 = radius2*Vector2(cos(i*2*PI/count),sin(i*2*PI/count))
+		test.position = point2
+		test.set_target_position(-point1)
+		$DeleterLinesBin.add_child(test)
 	
 func player_name_handler():
 		if nameString == "Chardoney":

@@ -48,8 +48,11 @@ monitoring = false
 shape = SubResource("CircleShape2D_5slqh")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="DeleterLinesBin" type="Node2D" parent="."]
 
 [connection signal="body_shape_entered" from="visibleArea" to="." method="_on_visible_area_body_shape_entered"]
 [connection signal="body_shape_exited" from="visibleArea" to="." method="_on_visible_area_body_shape_exited"]
