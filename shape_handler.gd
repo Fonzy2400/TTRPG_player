@@ -32,8 +32,7 @@ func square():
 	$"../..".add_child(square)
 	square.position = $"../..".get_global_mouse_position()
 	$"../..".move_child(square,2)
-	var shape = square.get_node("shape")
-	shape.square(5)
+	square.square(5)
 	
 func cone():
 	var loadCone = load("res://shape.tscn")
@@ -42,8 +41,7 @@ func cone():
 	$"../..".add_child(cone)
 	cone.position = $"../..".get_global_mouse_position()
 	$"../..".move_child(cone,2)
-	var shape = cone.get_node("shape")
-	shape.cone(10)
+	cone.cone(10)
 	
 func circle():
 	var loadCircle = load("res://shape.tscn")
@@ -53,4 +51,4 @@ func circle():
 	circle.position = $"../..".get_global_mouse_position()
 	$"../..".move_child(circle,2)
 	var shape = circle.get_node("shape")
-	shape.circle(5)
+	circle.circle(8)

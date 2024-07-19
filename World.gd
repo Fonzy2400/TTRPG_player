@@ -40,8 +40,8 @@ func _on_picked_up():
 	var objects = get_tree().get_nodes_in_group("Movables")
 	for object in objects:
 		if(!object.held):
-			object.set_process(false)
 			object.selected = false
+			object.set_process(false)
 	multiple_grabs_handler() #ensures that two assets cannot be picked up at the same time
 #when an object is put down, all other objects turn back on
 func _on_put_down():

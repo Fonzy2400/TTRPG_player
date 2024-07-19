@@ -14,6 +14,8 @@ var shapeCone = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	super._ready()
+	$grabCircle.scale = Vector2(0.5,0.5)
+	$rotateCircle.scale = Vector2(0.5,0.5)
 	var shape = Polygon2D.new()
 	shape.name = "Shape"
 	shape.color = Color(0.8,0.2,0.2,0.5)
@@ -23,11 +25,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	super._process(delta)
 func triangle():
 	pass
 func square(length): #create square with given side length
-	print("at least I got here?")
 	var shape = $Shape
 	var squarePoints = nSidedPoly(4,length/5*16/sqrt(2),true) 
 	shape.set_polygon(squarePoints)
@@ -47,7 +48,7 @@ func cone(length):
 	shape.set_polygon(points)
 	#create circle for rotation node of spell casting cone
 	var circle = Polygon2D.new()
-	var circlePoints = nSidedPoly(200,5,false)
+	var circlePoints = nSidedPoly(200,8,false)
 	circle.set_polygon(circlePoints)
 	circle.color = Color(0.8,0.2,0.2)
 	add_child.call_deferred(circle)

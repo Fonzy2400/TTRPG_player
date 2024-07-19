@@ -4,6 +4,4 @@
 [ext_resource type="PackedScene" uid="uid://bc6ynutmbq71w" path="res://movable_object.tscn" id="2_77fuq"]
 
 [node name="Movable Object" instance=ExtResource("2_77fuq")]
-
-[node name="shape" type="Polygon2D" parent="." index="0"]
 script = ExtResource("1_x6cav")

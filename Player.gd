@@ -1,6 +1,6 @@
 extends MoveableObject2D
 #@export var stringName: String
-var count#
+var count
 var radius
 var isColliding = false
 signal tileBeGone
@@ -19,7 +19,7 @@ func _ready():
 		connect("tileBeBack",get_parent().restore_that_tile)
 	var points = PackedVector2Array([])
 	count = 50
-	radius = 198
+	radius = 50#198
 	for i in range(count):
 		var line = RayCast2D.new()
 		line.set_collision_mask(2)
@@ -28,10 +28,7 @@ func _ready():
 		var point = radius*Vector2(cos(i*2*PI/count),sin(i*2*PI/count))
 		#need to move them slightly away from each other so they don't just all detect at zero.
 		line.target_position = point
-		points.append(point)
-	$visibleArea/CollisionPolygon2D.set_polygon(points)
-	$Shape.set_polygon(points)
-
+	#collision()
 
 	
 
@@ -39,6 +36,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	super._process(delta)
+	if(!selected):
+		var points = PackedVector2Array([])
+		$visibleArea/CollisionPolygon2D.set_polygon(points)
+		$Shape.set_polygon(points)
 	if rotatable == true:
 		rotatable = false
 	
@@ -75,16 +76,16 @@ func _physics_process(delta):
 	if check > 0:
 		collision()
 	"""
-	
-	for line in $LinesBin.get_children():
-		if line.is_colliding():
-			isColliding = true
-			collision()
-		else: 
-			check+=1
-	if check == count:
-		pass
-		new_circle()
+	if (selected):
+		for line in $LinesBin.get_children():
+			if line.is_colliding():
+				isColliding = true
+				collision()
+			else: 
+				check+=1
+		if check == count:
+			pass
+			new_circle()
 	
 
 func player_name_handler():
