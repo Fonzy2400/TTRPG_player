@@ -41,16 +41,13 @@ func _on_picked_up():
 	for object in objects:
 		if(!object.held):
 			object.selected = false
-			#object.set_process(false)
-			object.get_node("grabCircle").monitoring = false
-			object.get_node("rotateCircle").monitoring = false
+			object.set_process(false)
 	multiple_grabs_handler() #ensures that two assets cannot be picked up at the same time
 #when an object is put down, all other objects turn back on
 func _on_put_down():
 	var objects = get_tree().get_nodes_in_group("Movables")
 	for object in objects:
-			object.get_node("grabCircle").monitoring = false
-			object.get_node("rotateCircle").monitoring = false
+		if(!object.held):
 			object.set_process(true)
 func _on_start_rotate():
 	var objects = get_tree().get_nodes_in_group("Movables")
@@ -67,10 +64,9 @@ func multiple_grabs_handler():
 	var objects = get_tree().get_nodes_in_group("Movables")
 	for object in objects:
 		#call the comparison first so that you don't accidentally put down anything you try to pick up
-		#if counter is greater than one, sets other picked up objects held and selected to false
+		#if counter is greater than one, pauses other picked up objects
 		if(object.held and held_counter>0):
-			object.held = false
-			object.selected = false
+			object.set_process(false)
 		#check if any objects are held, if they are increase the counter
 		if(object.held):
 			held_counter+=1
