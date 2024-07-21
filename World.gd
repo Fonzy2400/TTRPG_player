@@ -11,6 +11,7 @@ func _ready():
 	var stored = tilesShown.duplicate()
 	stored.visible = false
 	stored.name = "stored"
+	stored.position = Vector2(-1000000,0)
 	add_child(stored)
 	var coords = tilesShown.get_used_cells(0)
 	var coords2 = tilesShown.get_used_cells(1)
@@ -82,4 +83,4 @@ func restore_that_tile(Rid):
 	var coords = tiles.get_coords_for_body_rid(Rid)
 	var atlasCoords = stored.get_cell_atlas_coords(0,coords)
 	tiles.set_cell(0,coords,0,atlasCoords,0)
-	pass
+

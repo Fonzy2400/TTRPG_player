@@ -7,6 +7,7 @@ signal tileBeGone
 signal tileBeBack
 var collidingCheck = []
 var prevSelected = false
+signal tileChanged
 
 
 # Called when the node enters the scene tree for the first time.
@@ -18,8 +19,8 @@ func _ready():
 	if get_parent().name == "World":
 		connect("tileBeGone",get_parent().fuck_up_that_tile)
 		connect("tileBeBack",get_parent().restore_that_tile)
-	create_feelers()
-	collision()
+	#create_feelers()
+	#collision()
 
 	
 
@@ -41,10 +42,7 @@ func _process(delta):
 		$Shape.set_polygon(points)
 	if rotatable == true:
 		rotatable = false
-	for line in $LinesBin.get_children():
-		if line.is_colliding():
-			tileBeBack.emit(line.get_collider_rid())
-	prevSelected = selected
+	
 	
 
 func collision():
@@ -76,6 +74,10 @@ func _physics_process(delta):
 	if check > 0:
 		collision()
 	"""
+	#for line in $LinesBin.get_children():
+		#if line.is_colliding():	
+			#tileBeBack.emit(line.correctRID)
+	prevSelected = selected
 	if (selected):
 		for line in $LinesBin.get_children():
 			if line.is_colliding():
@@ -88,11 +90,12 @@ func _physics_process(delta):
 			new_circle()
 	
 func create_feelers():
+	var ray = load("res://my_ray.tscn")
 	var points = PackedVector2Array([])
 	count = 50
 	radius = 198
 	for i in range(count):
-		var line = RayCast2D.new()
+		var line = ray.instantiate()
 		line.set_collision_mask(4)
 		$LinesBin.add_child(line)
 		var point = radius*Vector2(cos(i*2*PI/count),sin(i*2*PI/count))
@@ -131,7 +134,6 @@ func player_name_handler():
 			$sprite.scale = Vector2(0.33,0.33)
 			$rotateCircle.scale = Vector2(0.5,0.5)
 			$grabCircle.scale = Vector2(0.5,0.5)
-
 
 
 func _on_visible_area_body_entered(body):
