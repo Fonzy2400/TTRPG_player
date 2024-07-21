@@ -1,14 +1,14 @@
-[gd_scene load_steps=22 format=3 uid="uid://brv8r1qq00oo6"]
+[gd_scene load_steps=22 format=3 uid="uid://dm8wq3vjd67un"]
 
-[ext_resource type="Script" path="res://World.gd" id="1_6mxbr"]
-[ext_resource type="Texture2D" uid="uid://yac0neece40c" path="res://D&D assets.png" id="2_1gks3"]
-[ext_resource type="Texture2D" uid="uid://bq3kaalfvjxx6" path="res://Pixel art/D&D assets.png" id="2_w0fkh"]
-[ext_resource type="Script" path="res://Camera2D.gd" id="3_ou46f"]
-[ext_resource type="PackedScene" uid="uid://bkltkbteleenc" path="res://player_handler.tscn" id="6_ocs1r"]
-[ext_resource type="Script" path="res://cursor.gd" id="6_ypqia"]
-[ext_resource type="PackedScene" uid="uid://dq5v1it86kno5" path="res://enemy_handler.tscn" id="7_il3h0"]
-[ext_resource type="PackedScene" uid="uid://dlm4wp1coycpi" path="res://initiative_handler.tscn" id="7_ocy4l"]
-[ext_resource type="PackedScene" uid="uid://w08r33mh2o8i" path="res://shape_handler.tscn" id="7_ycuix"]
+[ext_resource type="Script" path="res://World.gd" id="1_4q3aj"]
+[ext_resource type="Texture2D" uid="uid://yac0neece40c" path="res://D&D assets.png" id="2_ahs2h"]
+[ext_resource type="Script" path="res://Camera2D.gd" id="3_7rwp5"]
+[ext_resource type="PackedScene" uid="uid://w08r33mh2o8i" path="res://shape_handler.tscn" id="4_6ugxy"]
+[ext_resource type="PackedScene" uid="uid://dq5v1it86kno5" path="res://enemy_handler.tscn" id="5_vsu05"]
+[ext_resource type="PackedScene" uid="uid://bkltkbteleenc" path="res://player_handler.tscn" id="6_2hwhw"]
+[ext_resource type="PackedScene" uid="uid://dlm4wp1coycpi" path="res://initiative_handler.tscn" id="7_uwpvw"]
+[ext_resource type="Texture2D" uid="uid://bq3kaalfvjxx6" path="res://Pixel art/D&D assets.png" id="8_vo5bq"]
+[ext_resource type="Script" path="res://cursor.gd" id="9_uslvi"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_omr64"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -41,7 +41,7 @@ polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7w5nx"]
-texture = ExtResource("2_1gks3")
+texture = ExtResource("2_ahs2h")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -467,7 +467,7 @@ physics_layer_1/collision_mask = 4
 sources/0 = SubResource("TileSetAtlasSource_7w5nx")
 
 [node name="World" type="Node2D"]
-script = ExtResource("1_6mxbr")
+script = ExtResource("1_4q3aj")
 
 [node name="shows" type="TileMap" parent="."]
 texture_filter = 1
@@ -479,32 +479,32 @@ layer_0/tile_data = PackedInt32Array(1703969, 262144, 1, 1638433, 262144, 1, 157
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(491, 266)
 zoom = Vector2(4, 4)
-script = ExtResource("3_ou46f")
+script = ExtResource("3_7rwp5")
 
 [node name="Timer" type="Timer" parent="Camera2D"]
 wait_time = 0.1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="shape_handler" parent="CanvasLayer" instance=ExtResource("7_ycuix")]
+[node name="shape_handler" parent="CanvasLayer" instance=ExtResource("4_6ugxy")]
 offset_left = 60.0
 offset_top = -9.0
 offset_right = -908.0
 offset_bottom = -598.0
 
-[node name="enemy_handler" parent="CanvasLayer" instance=ExtResource("7_il3h0")]
+[node name="enemy_handler" parent="CanvasLayer" instance=ExtResource("5_vsu05")]
 offset_left = 4.0
 offset_top = -5.0
 offset_right = -1074.0
 offset_bottom = -604.0
 
-[node name="player_handler" parent="CanvasLayer" instance=ExtResource("6_ocs1r")]
+[node name="player_handler" parent="CanvasLayer" instance=ExtResource("6_2hwhw")]
 offset_left = 230.0
 offset_top = 7.0
 offset_right = 303.0
 offset_bottom = 38.0
 
-[node name="initiative_handler" parent="CanvasLayer" instance=ExtResource("7_ocy4l")]
+[node name="initiative_handler" parent="CanvasLayer" instance=ExtResource("7_uwpvw")]
 offset_left = 1000.0
 offset_top = 10.0
 offset_right = 1395.0
@@ -513,7 +513,7 @@ offset_bottom = 103.0
 [node name="cursor" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(28, 23)
-texture = ExtResource("2_w0fkh")
+texture = ExtResource("8_vo5bq")
 region_enabled = true
 region_rect = Rect2(224, 0, 32, 32)
-script = ExtResource("6_ypqia")
+script = ExtResource("9_uslvi")

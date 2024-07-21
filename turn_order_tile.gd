@@ -14,6 +14,8 @@ func _ready():
 	var numString = int(stringSlice)
 	var number = int(numString)
 	initiative = number
+	select()
+	grab_focus()
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

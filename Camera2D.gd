@@ -56,14 +56,14 @@ func _process(delta):
 	if Input.is_action_just_released("grabCamera"):
 		mouseCam = false
 	#camera moves according to directional keys or wasd
-	if Input.is_action_pressed("cameraUp"):
-		self.position.y +=-velocity
-	if Input.is_action_pressed("cameraDown"):
-		self.position.y +=velocity
-	if Input.is_action_pressed("cameraLeft"):
-		self.position.x +=-velocity
-	if Input.is_action_pressed("cameraRight"):
-		self.position.x +=velocity
+	#if Input.is_action_pressed("cameraUp"):
+	#	self.position.y +=-velocity
+	#if Input.is_action_pressed("cameraDown"):
+	#	self.position.y +=velocity
+	#if Input.is_action_pressed("cameraLeft"):
+	#	self.position.x +=-velocity
+	#if Input.is_action_pressed("cameraRight"):
+	#	self.position.x +=velocity
 	#for some reason clamp() function didn't work, this keeps zoom within acceptable limits
 	if zoom.x < 0.5:
 		zoom = Vector2(0.5,0.5)

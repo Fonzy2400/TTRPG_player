@@ -13,12 +13,13 @@ func _ready():
 	stored.name = "stored"
 	stored.position = Vector2(-1000000,0)
 	add_child(stored)
-	var coords = tilesShown.get_used_cells(0)
-	var coords2 = tilesShown.get_used_cells(1)
-	for coord in coords:
-		tilesShown.set_cell(0,coord,0,Vector2i(3,3),0)
-	for coord in coords2:
-		tilesShown.set_cell(1,coord,0,Vector2i(3,3),0)
+	if dark:
+		var coords = tilesShown.get_used_cells(0)
+		var coords2 = tilesShown.get_used_cells(1)
+		for coord in coords:
+			tilesShown.set_cell(0,coord,0,Vector2i(3,3),0)
+		for coord in coords2:
+			tilesShown.set_cell(1,coord,0,Vector2i(3,3),0)
 		#var storagePoint = coord
 		#var atlasCoords = stored.get_cell_atlas_coords(0,storagePoint)
 		#tilesShown.set_cell(0,storagePoint,0,atlasCoords,0)
@@ -42,7 +43,7 @@ func _on_picked_up():
 	for object in objects:
 		if(!object.held):
 			object.selected = false
-			object.set_process(false)
+			#object.set_process(false)
 	multiple_grabs_handler() #ensures that two assets cannot be picked up at the same time
 #when an object is put down, all other objects turn back on
 func _on_put_down():
@@ -67,7 +68,8 @@ func multiple_grabs_handler():
 		#call the comparison first so that you don't accidentally put down anything you try to pick up
 		#if counter is greater than one, pauses other picked up objects
 		if(object.held and held_counter>0):
-			object.set_process(false)
+			object.held = false
+			object.selected = false
 		#check if any objects are held, if they are increase the counter
 		if(object.held):
 			held_counter+=1

@@ -5,6 +5,8 @@ signal tileBeBack
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#IT IS IMPERITIVE THAT IN ANY SCENE A PLAYER CAN EXIST RAYS ARE KEPT IN RAYBUNDLE IN A PLAYER
+	#THAT IS A CHILD OF A WORLD SCENE!!!!!!!!!
 	connect("tileBeBack",$"../../..".restore_that_tile)
 	pass # Replace with function body.
 

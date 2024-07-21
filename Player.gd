@@ -28,10 +28,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	super._process(delta)
-	if selected:
-		$Label.text = "selected"
-	else:
-		$Label.text = "not selected"
+	#if selected:
+		#$Label.text = "selected"
+	#else:
+		#$Label.text = "not selected"
 	if selected != prevSelected:
 		if selected:
 			create_feelers()

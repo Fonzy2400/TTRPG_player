@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgkdc2qpi2pdw"]
+
+[ext_resource type="Script" path="res://file_button.gd" id="1_ykopv"]
+
+[node name="FileButton" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_ykopv")
