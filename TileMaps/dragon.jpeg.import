@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bobr6td3xqshy"
-path="res://.godot/imported/dragon.jpeg-6cfaffc588af65d4dc8cb99e4c4f12cf.ctex"
+path="res://.godot/imported/dragon.jpeg-041b9cd243f9be107efab1c26ce5da46.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://dragon.jpeg"
-dest_files=["res://.godot/imported/dragon.jpeg-6cfaffc588af65d4dc8cb99e4c4f12cf.ctex"]
+source_file="res://TileMaps/dragon.jpeg"
+dest_files=["res://.godot/imported/dragon.jpeg-041b9cd243f9be107efab1c26ce5da46.ctex"]
 
 [params]
 
